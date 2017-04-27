@@ -1,0 +1,14 @@
+{
+    "_id": "heater_core_1_1",
+    "arguments": [
+        6,
+        true
+    ],
+    "environment": "environment_1",
+    "type": "binary_actuator",
+    "inputs": {
+        "cmd": {
+            "variable": "air_temperature"
+        }
+    }
+}

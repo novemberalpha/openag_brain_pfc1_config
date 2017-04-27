@@ -1,0 +1,9 @@
+{
+    "_id": "chamber_fan_1",
+    "arguments": [
+        15,
+        true
+    ],
+    "environment": "environment_1",
+    "type": "binary_actuator"
+}

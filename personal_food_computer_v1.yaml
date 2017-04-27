@@ -1,0 +1,274 @@
+---
+# Firmware categories to include
+categories:
+- sensors
+- actuators
+- persistence
+- control
+firmware_module:
+- _id: air_flush_1
+  arguments:
+  - 14
+  - true
+  environment: environment_1
+  type: air_flush
+  inputs:
+    cmd:
+      variable: air_flush_on
+- _id: grow_lights_1
+  arguments:
+  - 8
+  - true
+  environment: environment_1
+  type: binary_actuator
+  inputs:
+    cmd:
+      variable: light_intensity #this doesn't exist
+- _id: humidifier_1
+  arguments:
+  - 9
+  - true
+  environment: environment_1
+  type: binary_actuator
+  inputs:
+    cmd:
+      variable: air_humidity
+- _id: heater_core_1
+  arguments:
+  - 6
+  - true
+  environment: environment_1
+  type: binary_actuator
+  inputs:
+    cmd:
+      variable: air_temperature
+- _id: chamber_fan_1
+  arguments:
+  - 14
+  - true
+  environment: environment_1
+  type: binary_actuator
+- _id: water_circulation_pump_1
+  arguments:
+  - 7
+  - true
+  environment: environment_1
+  type: binary_actuator
+- _id: dht22_1
+  type: dht22
+  arguments:
+  - 2
+  environment: environment_1
+- _id: gc0011_1
+  type: gc0011
+  arguments:
+  - 12
+  - 11
+  environment: environment_1
+firmware_module_type:
+- _id: dht22
+  repository:
+    type: git
+    url: https://github.com/OpenAgInitiative/openag_dht22.git
+  header_file: openag_dht22.h
+  class_name: Dht22
+  description: ''
+  arguments:
+  - name: pin
+    type: int
+  outputs:
+    air_temperature:
+      type: std_msgs/Float32
+    air_humidity:
+      type: std_msgs/Float32
+  dependencies:
+  - type: git
+    url: https://github.com/OpenAgInitiative/openag_firmware_module.git
+  status_codes:
+    '1': Failed to read from sensor
+- _id: gc0011
+  header_file: openag_gc0011.h
+  class_name: Gc0011
+  description: 'Co2 Sensor from PFC1 BOM'
+  repository:
+    type: git
+    url: https://github.com/novemberalpha/openag_gc0011.git
+  arguments:
+  - name: rx_pin
+    type: int
+    default: 12
+  - name: tx_pin
+    type: int
+    default: 11
+  outputs:
+    air_carbon_dioxide:
+      type: std_msgs/Float32
+  dependencies:
+  - type: git
+    url: https://github.com/OpenAgInitiative/openag_firmware_module.git
+  status_codes:
+    '2': Failed to read from sensor
+- _id: air_flush
+  repository:
+    type: git
+    url: https://github.com/OpenAgInitiative/openag_air_flush.git
+  header_file: openag_air_flush.h
+  class_name: AirFlush
+  arguments:
+  - name: pin
+    type: int
+  - name: is_active_low
+    type: bool
+    default: false
+  inputs:
+    cmd:
+      type: std_msgs/Float32
+  dependencies:
+  - type: git
+    url: http://github.com/OpenAgInitiative/openag_firmware_module.git
+- _id: binary_actuator
+  repository:
+    type: git
+    url: https://github.com/OpenAgInitiative/openag_binary_actuator.git
+  header_file: openag_binary_actuator.h
+  class_name: BinaryActuator
+  description: Driver for an actuator that can only be set ot binary values
+  arguments:
+  - name: pin
+    type: int
+  - name: is_active_low
+    type: bool
+    default: false
+  - name: shutoff_ms
+    type: int
+    default: 10000
+  inputs:
+    cmd:
+      type: std_msgs/Bool
+      categories:
+      - actuators
+  dependencies:
+  - type: git
+    url: https://github.com/OpenAgInitiative/openag_firmware_module.git
+- _id: tone_actuator
+  header_file: openag_tone_actuator.h
+  class_name: ToneActuator
+  arguments:
+  - name: pin
+    type: int
+  - name: is_active_low
+    type: bool
+    default: false
+  - name: tone_frequency
+    type: int
+    default: 140
+  - name: tone_duration
+    type: int
+    default: -1
+  inputs:
+    cmd:
+      type: std_msgs/Bool
+  repository:
+    url: https://github.com/OpenAgInitiative/openag_tone_actuator.git
+    type: git
+  dependencies:
+  - type: git
+    url: http://github.com/OpenAgInitiative/openag_firmware_module.git
+- _id: pulse_actuator
+  description: Driver for binary actuators with very granular timescales
+  repository:
+    url: https://github.com/OpenAgInitiative/openag_pulse_actuator.git
+    type: git
+  header_file: openag_pulse_actuator.h
+  class_name: PulseActuator
+  arguments:
+  - name: pin
+    type: int
+  - name: is_active_low
+    type: bool
+    default: false
+  - name: pulse_ms
+    type: int
+    default: 100
+  - name: update_ms
+    type: int
+    default: 2000
+  inputs:
+    cmd:
+      type: std_msgs/Bool
+  dependencies:
+  - type: git
+    url: http://github.com/OpenAgInitiative/openag_firmware_module.git
+- _id: pwm_actuator
+  repository:
+    type: git
+    url: https://github.com/OpenAgInitiative/openag_pwm_actuator.git
+  header_file: openag_pwm_actuator.h
+  class_name: PwmActuator
+  description: Driver for an actuator that can take any value between 0 and 1
+  arguments:
+  - name: pin
+    type: int
+  - name: is_active_low
+    type: bool
+    default: false
+  - name: threshold
+    type: float
+    default: 0
+    description: Command threshold at which the actuator turns on
+  inputs:
+    cmd:
+      type: std_msgs/Float32
+      categories:
+      - actuators
+  dependencies:
+  - type: git
+    url: https://github.com/OpenAgInitiative/openag_firmware_module.git
+  status_codes:
+    '1': Invalid command received
+- _id: software_pwm_actuator
+  repository:
+    type: git
+    url: https://github.com/OpenAgInitiative/openag_software_pwm_actuator.git
+  header_file: openag_software_pwm_actuator.h
+  class_name: SoftwarePwmActuator
+  description: 'OpenAg driver for an actuator. Does pwm in software to allow for more
+    flexibility in configuration: particularly to allow for longer periods for actuators
+    that exhibit a nonlinear response to normal pwm.'
+  arguments:
+  - name: pin
+    type: int
+  - name: is_active_low
+    type: bool
+    default: false
+  - name: period
+    type: int
+    default: 1000
+  inputs:
+    cmd:
+      type: std_msgs/Float32
+      categories:
+      - actuators
+  dependencies:
+  - type: git
+    url: https://github.com/OpenAgInitiative/openag_firmware_module.git
+- _id: binary_sensor
+  repository:
+    type: git
+    url: https://github.com/OpenAgInitiative/openag_binary_sensor.git
+  description: Driver for any binary sensor that flips a pin
+  class_name: BinarySensor
+  header_file: openag_binary_sensor.h
+  arguments:
+  - name: pin
+    type: int
+  - name: is_active_low
+    type: bool
+    default: false
+  outputs:
+    is_on:
+      type: std_msgs/Bool
+  dependencies:
+  - type: git
+    url: https://github.com/OpenAgInitiative/openag_firmware_module.git
+  status_codes: {}

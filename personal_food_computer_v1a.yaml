@@ -1,0 +1,62 @@
+---
+# Firmware categories to include
+categories:
+- sensors
+- actuators
+- persistence
+- control
+firmware_module:
+- _id: dht22_1
+  type: dht22
+  arguments:
+  - 2
+  environment: environment_1
+- _id: gc0011_1
+  type: gc0011
+  arguments:
+  - 12
+  - 11
+  environment: environment_1
+firmware_module_type:
+- _id: dht22
+  repository:
+    type: git
+    url: https://github.com/OpenAgInitiative/openag_dht22.git
+  header_file: openag_dht22.h
+  class_name: Dht22
+  description: 'Temperature and Humidity Sensor'
+  arguments:
+  - name: pin
+    type: int
+  outputs:
+    air_temperature:
+      type: std_msgs/Float32
+    air_humidity:
+      type: std_msgs/Float32
+  dependencies:
+  - type: git
+    url: https://github.com/OpenAgInitiative/openag_firmware_module.git
+  status_codes:
+    '1': Failed to read from sensor
+- _id: gc0011
+  header_file: openag_gc0011.h
+  class_name: Gc0011
+  description: 'Co2 Sensor from PFC1 BOM'
+  repository:
+    type: git
+    url: https://github.com/novemberalpha/openag_gc0011.git
+  arguments:
+  - name: rx_pin
+    type: int
+    default: 12
+  - name: tx_pin
+    type: int
+    default: 11
+  outputs:
+    air_carbon_dioxide:
+      type: std_msgs/Float32
+  dependencies:
+  - type: git
+    url: https://github.com/OpenAgInitiative/openag_firmware_module.git
+  status_codes:
+    '2': Failed to read from sensor

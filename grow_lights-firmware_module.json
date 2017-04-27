@@ -1,0 +1,9 @@
+{
+    "_id": "grow_lights_1",
+    "arguments": [
+        8,
+        true
+    ],
+    "environment": "environment_1",
+    "type": "binary_actuator"
+}

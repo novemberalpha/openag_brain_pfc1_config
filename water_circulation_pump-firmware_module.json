@@ -1,0 +1,9 @@
+{
+    "_id": "water_circulation_pump_1",
+    "arguments": [
+        7,
+        true
+    ],
+    "environment": "environment_1",
+    "type": "binary_actuator"
+}
