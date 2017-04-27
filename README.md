@@ -1,5 +1,10 @@
 # openag_brain_pfc1_config
 
+Import Fixtures
+
+`openag db load_fixture ~/_path_/_to_/_file_/pfc1_default.json`
+
+
 Test Sensor
 
 `rostopic echo /sensors/dht22_1/air_humidity/raw`
