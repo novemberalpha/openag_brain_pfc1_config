@@ -1,0 +1,10 @@
+
+{
+    "_id": "humidifier_1",
+    "arguments": [
+        9,
+        true
+    ],
+    "environment": "environment_1",
+    "type": "binary_actuator"
+}
