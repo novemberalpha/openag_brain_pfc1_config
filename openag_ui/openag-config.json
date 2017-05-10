@@ -1,0 +1,137 @@
+{
+  "root_url": null,
+  "origin_url": "{{root_url}}:5984",
+  "api_url": "{{origin_url}}/_openag/api/0.0.1",
+  "start_recipe_url": "{{api_url}}/service/environments/{{environment}}/start_recipe",
+  "stop_recipe_url": "{{api_url}}/service/environments/{{environment}}/stop_recipe",
+
+  "demo": {
+    "image_url": "{{root_url}}/img.jpg?timestamp={{timestamp}}"
+  },
+
+  "environmental_data_point": {
+    "local": "environmental_data_point",
+    "origin": "{{origin_url}}/environmental_data_point",
+    "origin_latest": "{{origin_url}}/environmental_data_point/_design/openag/_view/by_variable?group_level=3&startkey={{startkey}}&endkey={{endkey}}",
+    "origin_range": "{{origin_url}}/environmental_data_point/_design/openag/_view/by_timestamp?startkey={{startkey}}&endkey={{endkey}}&limit={{limit}}&descending={{descending}}&stale=update_after",
+    "origin_by_variable_csv": "{{origin_url}}/environmental_data_point/_design/openag/_list/csv/by_variable?group_level={{group_level}}&startkey={{startkey}}&endkey={{endkey}}&limit={{limit}}&descending={{descending}}&stale=update_after",
+    "timelapse": "{{origin_url}}/environmental_data_point/{{recipe_start_id}}/timelapse",
+    "image": "{{origin_url}}/environmental_data_point/{{id}}/image",
+    "changes": "{{origin_url}}/environmental_data_point/_changes?feed=longpoll&include_docs=true&heartbeat=true&since=now"
+  },
+
+  "recipes": {
+    "origin": "{{origin_url}}/recipes",
+    "doc": "{{origin_url}}/recipes/{{id}}",
+    "all_docs": "{{origin_url}}/recipes/_all_docs?include_docs=true"
+  },
+
+  "environments": {
+    "default": {
+      "id": "environment_1",
+      "name": "Food Computer"
+    },
+    "local": "environment",
+    "origin": "{{origin_url}}/environment"
+  },
+
+  "app": {
+    "local": "openag",
+    "state_id": "state",
+    "default_state": "dashboard",
+    "show_nav": true,
+    "show_dashboard": true,
+    "show_chart": true,
+    "show_controls": true
+  },
+
+  "chart": [
+    {
+      "variable": "air_carbon_dioxide",
+      "title": "Air CO2",
+      "unit": " ppm",
+      "min": 0,
+      "max": 2200,
+      "color": "#9B5000"
+    },
+    {
+      "variable": "air_temperature",
+      "title": "Air Temperature",
+      "unit": "\u00B0",
+      "min": 7.2,
+      "max": 48.8,
+      "color": "#ff8300"
+    },
+    {
+      "variable": "water_temperature",
+      "title": "Water Temperature",
+      "unit": "\u00B0",
+      "min": 7.2,
+      "max": 48.8,
+      "color": "#0052b3"
+    },
+    {
+      "variable": "water_electrical_conductivity",
+      "title": "Nutrients",
+      "unit": " mS/cm",
+      "color": "#AB36B2",
+      "min": 0,
+      "max": 4
+    },
+    {
+      "variable": "water_potential_hydrogen",
+      "title": "pH",
+      "unit": "",
+      "color": "#5ada00",
+      "min": 4,
+      "max": 10
+    },
+    {
+      "variable": "air_humidity",
+      "title": "Humidity",
+      "unit": "%",
+      "min": 0,
+      "max": 100,
+      "color": "#00a5ed"
+    }
+  ],
+
+  "actuators": [
+    {
+      "id": "grow_lights_1",
+      "topic": "{{api}}/topic/actuators/grow_lights_1/cmd",
+      "title": "Grow Lights",
+      "type": "binary_actuator"
+    },
+    {
+      "id": "humidifier_1",
+      "topic": "{{api}}/topic/actuators/humidifier_1/cmd",
+      "title": "Humidifier",
+      "type": "binary_actuator"
+    },
+    {
+      "id": "chamber_fan_1",
+      "topic": "{{api}}/topic/actuators/chamber_fan_1/cmd",
+      "title": "Chamber Fan",
+      "type": "binary_actuator"
+    },
+    {
+      "id": "heater_core_1_1",
+      "topic": "{{api}}/topic/actuators/heater_core_1_1/cmd",
+      "title": "Heater Core",
+      "type": "binary_actuator"
+    },
+    {
+      "id": "water_circulation_pump_1",
+      "topic": "{{api}}/topic/actuators/water_circulation_pump_1/cmd",
+      "title": "Water Circulation Pump",
+      "type": "binary_actuator"
+    },
+    {
+      "id": "air_flush_1",
+      "topic": "{{api}}/topic/actuators/air_flush_1/cmd",
+      "title": "Air Flush",
+      "type": "binary_actuator"
+    }
+  ]
+}
