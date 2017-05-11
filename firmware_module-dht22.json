@@ -8,9 +8,9 @@
     "outputs": {
         "air_temperature": {
             "variable": "air_temperature"
+        },
+        "air_humidity": {
+            "variable": "air_humidity"
         }
-    },
-    "air_humidity": {
-        "variable": "air_humidity"
     }
 }
