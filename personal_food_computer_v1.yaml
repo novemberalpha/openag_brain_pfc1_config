@@ -33,7 +33,7 @@ firmware_module:
   inputs:
     cmd:
       variable: air_humidity
-- _id: heater_core_1
+- _id: heater_core_1_1
   arguments:
   - 6
   - true
@@ -59,11 +59,10 @@ firmware_module:
   arguments:
   - 2
   environment: environment_1
-- _id: gc0011_1
-  type: gc0011
+- _id: gc0012_1
+  type: gc0012
   arguments:
-  - 12
-  - 11
+  - 1
   environment: environment_1
 firmware_module_type:
 - _id: dht22
@@ -100,6 +99,25 @@ firmware_module_type:
   - name: tx_pin
     type: int
     default: 11
+  outputs:
+    air_carbon_dioxide:
+      type: std_msgs/Float32
+  dependencies:
+  - type: git
+    url: https://github.com/OpenAgInitiative/openag_firmware_module.git
+  status_codes:
+    '2': Failed to read from sensor
+- _id: gc0012
+  header_file: openag_gc0012.h
+  class_name: Gc0012
+  description: ''
+  repository:
+    type: git
+    url: https://github.com/novemberalpha/openag_gc0012
+  arguments:
+  - name: serial_port
+    type: int
+    default: 1
   outputs:
     air_carbon_dioxide:
       type: std_msgs/Float32
