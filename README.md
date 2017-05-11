@@ -2,6 +2,8 @@
 
 Import Fixtures
 
+`openag db init`
+
 `openag db load_fixture ~/_path_/_to_/_file_/pfc1_default.json`
 
 
