@@ -5,6 +5,101 @@
             "name": "Environment 1"
         }
     ],
+    "firmware_module": [
+        {
+            "_id": "air_flush_1",
+            "arguments": [
+                14,
+                true
+            ],
+            "environment": "environment_1",
+            "type": "air_flush",
+            "inputs": {
+                "cmd": {
+                    "variable": "air_flush_on"
+                }
+            }
+        },
+        {
+            "_id": "chamber_fan_1",
+            "arguments": [
+                15,
+                true
+            ],
+            "environment": "environment_1",
+            "type": "binary_actuator"
+        },
+        {
+            "_id": "dht22_1",
+            "type": "dht22",
+            "environment": "environment_1",
+            "arguments": [
+                2
+            ],
+            "outputs": {
+                "air_temperature": {
+                    "variable": "air_temperature"
+                },
+                "air_humidity": {
+                    "variable": "air_humidity"
+                }
+            }
+        },
+        {
+            "_id": "gc0012_1",
+            "type": "gc0012",
+            "environment": "environment_1",
+            "arguments": [
+                1
+            ],
+            "outputs": {
+                "air_carbon_dioxide": {
+                    "variable": "air_carbon_dioxide"
+                }
+            }
+        },
+        {
+            "_id": "grow_lights_1",
+            "arguments": [
+                8,
+                true
+            ],
+            "environment": "environment_1",
+            "type": "binary_actuator"
+        },
+        {
+            "_id": "heater_core_1_1",
+            "arguments": [
+                6,
+                true
+            ],
+            "environment": "environment_1",
+            "type": "binary_actuator",
+            "inputs": {
+                "cmd": {
+                    "variable": "air_temperature"
+                }
+            }
+        },
+        {
+            "_id": "humidifier_1",
+            "arguments": [
+                9,
+                true
+            ],
+            "environment": "environment_1",
+            "type": "binary_actuator"
+        },
+        {
+            "_id": "water_circulation_pump_1",
+            "arguments": [
+                7,
+                true
+            ],
+            "environment": "environment_1",
+            "type": "binary_actuator"
+        }
+    ],
     "firmware_module_type": [
         {
             "_id": "binary_actuator",
