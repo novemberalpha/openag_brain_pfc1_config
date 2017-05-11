@@ -154,7 +154,6 @@
         },
         {
             "_id": "gc0011",
-            "_rev": "1-735697cdb8b2567ebea65ebf3819bd5e",
             "header_file": "openag_gc0011.h",
             "class_name": "Gc0011",
             "description": "Co2 sensor from the PFC1 BOM",
@@ -172,6 +171,37 @@
                     "name": "tx_pin",
                     "type": "int",
                     "default": 11
+                }
+            ],
+            "outputs": {
+                "air_carbon_dioxide": {
+                    "type": "std_msgs/Float32"
+                }
+            },
+            "dependencies": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/OpenAgInitiative/openag_firmware_module.git"
+                }
+            ],
+            "status_codes": {
+                "2": "Failed to read from sensor"
+            }
+        },
+        {
+            "_id": "gc0012",
+            "header_file": "openag_gc0012.h",
+            "class_name": "Gc0012",
+            "description": "",
+            "repository": {
+                "type": "git",
+                "url": "https://github.com/novemberalpha/openag_gc0012.git"
+            },
+            "arguments": [
+                {
+                    "name": "serial_port",
+                    "type": "int",
+                    "default": 1
                 }
             ],
             "outputs": {
