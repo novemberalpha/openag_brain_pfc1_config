@@ -748,12 +748,12 @@
                 "image_width": {
                     "type": "int",
                     "description": "Image width",
-                    "default": 640
+                    "default": 1280
                 },
                 "image_height": {
                     "type": "int",
                     "description": "Image height",
-                    "default": 480
+                    "default": 960
                 },
                 "pixel_format": {
                     "type": "str",
@@ -797,7 +797,7 @@
                 },
                 "autofocus": {
                     "type": "bool",
-                    "default": false,
+                    "default": true,
                     "description": "Enable camera's autofocus"
                 },
                 "focus": {

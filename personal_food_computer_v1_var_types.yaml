@@ -64,11 +64,11 @@ camera_variables:
   aerial_image:
     name: aerial_image
     description: "Image from above the tray looking down on the plants"
-    units: "png"
+    units: "jpg"
   frontal_image:
     name: frontal_image
     description: "Image from in front of the tray looking towards the plants"
-    units: "png"
+    units: "jpg"
 user_variables:
   marker:
     name: marker
