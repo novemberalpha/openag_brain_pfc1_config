@@ -26,16 +26,16 @@ camera_frame_id: "head_camera"
 framerate: 1
 
 # Contrast of video image (0-255)
-contrast: 32
+contrast: -1
 
 # Brightness of video image (0-255)
-brightness: 32
+brightness: -1
 
 # Saturation of video image (0-255)
-saturation: 32
+saturation: -1
 
 # Sharpness of video image (0-255)
-sharpness: 22
+sharpness: -1
 
 # Enable camera's autofocus
 autofocus: true
@@ -44,7 +44,7 @@ autofocus: true
 autoexposure: true
 
 # If autofocus is disabled, the focus of the camera (0=at infinity)
-focus: 51
+focus: -1
 
 # A url to the camera calibration file that will be read by the
 # CameraInfoManager class
