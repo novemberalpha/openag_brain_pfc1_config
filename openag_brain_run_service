@@ -4,4 +4,4 @@
 # by a service (openag_brain.service).
 # This is all handled by the `install_dev` script.
 source /opt/ros/indigo/setup.bash
-rosrun openag_brain main personal_food_computer_v1.launch
+rosrun openag_brain main pfc1.launch
