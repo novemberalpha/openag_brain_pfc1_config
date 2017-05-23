@@ -40,6 +40,9 @@ sharpness: 22
 # Enable camera's autofocus
 autofocus: true
 
+# Enable camera's autoexposure
+autoexposure: true
+
 # If autofocus is disabled, the focus of the camera (0=at infinity)
 focus: 51
 
