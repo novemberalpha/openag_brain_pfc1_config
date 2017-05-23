@@ -1,8 +1,8 @@
 <launch>
   <arg name="environment_1" value="environments/environment_1" />
 
-  <rosparam command="load" file="$(find openag_brain)/launch/personal_food_computer_v1.yaml" />
-  <rosparam command="load" file="$(find openag_brain)/launch/personal_food_computer_v1_var_types.yaml" ns="var_types"/>
+  <rosparam command="load" file="$(find openag_brain)/launch/pfc1.yaml" />
+  <rosparam command="load" file="$(find openag_brain)/launch/pfc1_var_types.yaml" ns="var_types"/>
   <group ns="$(arg environment_1)">
     <node pkg="openag_brain" type="topic_filter.py" name="topic_filter_1"/>
     <node pkg="openag_brain" type="pid.py" name="air_temperature_controller_1">
@@ -48,7 +48,7 @@
       <param name="autosize" value="false" />
     </node>
     <node pkg="usb_cam" type="usb_cam_node" name="aerial_image">
-      <rosparam file="$(find openag_brain)/launch/usb_cam_v1.yaml" />
+      <rosparam file="$(find openag_brain)/launch/pfc1_usb_cam.yaml" />
     </node>
   </group>
   <node pkg="openag_brain" type="expand_diagnostics.py" name="expand_diagnostics"/>
