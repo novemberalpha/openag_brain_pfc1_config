@@ -45,7 +45,7 @@
     <node pkg="image_view" type="image_saver" name="aerial_saver">
       <remap from="image" to="aerial_image/image_raw" />
       <param name="filename_format" value="/var/www/html/img.jpg" type="string" />
-      <param name="autosize" value="true" />
+      <param name="autosize" value="false" />
     </node>
     <node pkg="usb_cam" type="usb_cam_node" name="aerial_image">
       <rosparam file="$(find openag_brain)/launch/usb_cam.yaml" />
