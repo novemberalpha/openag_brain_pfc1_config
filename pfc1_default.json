@@ -758,7 +758,7 @@
                 "pixel_format": {
                     "type": "str",
                     "description": "Possible values are mjpeg, yuyv, uyvy",
-                    "default": "mjpeg"
+                    "default": "yuyv"
                 },
                 "io_method": {
                     "type": "str",
