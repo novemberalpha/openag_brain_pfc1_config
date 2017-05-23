@@ -11,7 +11,7 @@ firmware_module:
   - 14
   - true
   environment: environment_1
-  type: air_flush
+  type: binary_actuator
   inputs:
     cmd:
       variable: air_flush_on
@@ -44,7 +44,7 @@ firmware_module:
       variable: air_temperature
 - _id: chamber_fan_1
   arguments:
-  - 14
+  - 15
   - true
   environment: environment_1
   type: binary_actuator

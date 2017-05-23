@@ -13,7 +13,7 @@
                 true
             ],
             "environment": "environment_1",
-            "type": "air_flush",
+            "type": "binary_actuator",
             "inputs": {
                 "cmd": {
                     "variable": "air_flush_on"
