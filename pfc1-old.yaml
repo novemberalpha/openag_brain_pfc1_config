@@ -6,6 +6,15 @@ categories:
 - persistence
 - control
 firmware_module:
+- _id: air_flush_1
+  arguments:
+  - 14
+  - true
+  environment: environment_1
+  type: binary_actuator
+  inputs:
+    cmd:
+      variable: air_flush_on
 - _id: grow_lights_1
   arguments:
   - 8
@@ -33,26 +42,12 @@ firmware_module:
   inputs:
     cmd:
       variable: air_temperature
-- _id: cooling_fan_1
-  arguments:
-  - 14
-  - true
-  environment: environment_1
-  type: binary_actuator
-  inputs:
-    cmd:
-      variable: air_temperature
-      multiplier: -1
 - _id: chamber_fan_1
   arguments:
   - 15
   - true
   environment: environment_1
   type: binary_actuator
-  inputs:
-    cmd:
-      variable: air_temperature
-      multiplier: -1
 - _id: water_circulation_pump_1
   arguments:
   - 7
