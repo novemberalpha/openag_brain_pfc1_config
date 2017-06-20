@@ -1,6 +1,6 @@
 {
   "root_url": null,
-  "origin_url": "{{root_url}}:5984",
+  "origin_url": "{{root_url}}",
   "api_url": "{{origin_url}}/_openag/api/0.0.1",
   "start_recipe_url": "{{api_url}}/service/environments/{{environment}}/start_recipe",
   "stop_recipe_url": "{{api_url}}/service/environments/{{environment}}/stop_recipe",
@@ -110,6 +110,12 @@
       "type": "binary_actuator"
     },
     {
+      "id": "cooling_fan_1",
+      "topic": "{{api}}/topic/actuators/cooling_fan_1/cmd",
+      "title": "Cooling Fan",
+      "type": "binary_actuator"
+    },
+    {
       "id": "chamber_fan_1",
       "topic": "{{api}}/topic/actuators/chamber_fan_1/cmd",
       "title": "Chamber Fan",
@@ -125,12 +131,6 @@
       "id": "water_circulation_pump_1",
       "topic": "{{api}}/topic/actuators/water_circulation_pump_1/cmd",
       "title": "Water Circulation Pump",
-      "type": "binary_actuator"
-    },
-    {
-      "id": "air_flush_1",
-      "topic": "{{api}}/topic/actuators/air_flush_1/cmd",
-      "title": "Air Flush",
       "type": "binary_actuator"
     }
   ]
